@@ -17,7 +17,7 @@ html {
   font-family: "Poppins", "Noto Sans Lao", sans-serif;
 }
 
-u {
+u, a {
   text-decoration: none;
   font-family: "Poppins", "Noto Sans Lao", sans-serif;
   font-weight: bold;
@@ -25,7 +25,7 @@ u {
 
 /* ==========> Login <========== */
 .login_bg {
-  background: url("../Image/bg-vipin.jpg") no-repeat center fixed;
+  background: url("../Image/1village1bealer2.png") no-repeat center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -41,6 +41,10 @@ u {
   /* opacity: 0.9; */
 }
 
+.color-red{
+  color: rgb(241, 77, 88) !important;
+}
+
 .login-con {
   margin: auto 0;
   position: absolute;
@@ -52,6 +56,7 @@ u {
 
 .login_grid_logo {
   justify-content: center;
+
 }
 
 div .login_paper {
@@ -722,7 +727,7 @@ td {
 
 .book-log {
   text-decoration: none;
-  color: #fff;
+  color: "#000";
   border-radius: .5rem;
   padding: .6rem 2rem;
   background-color: rgba(255, 255, 255, 0.15);
@@ -750,9 +755,11 @@ td {
 .font-40 {
   font-size: 40px !important;
   font-weight: bold !important;
-  color: white !important;
-  font-family: monospace !important;
+  color: rgb(0, 0, 0) !important;
+  /* font-family: monospace !important; */
+  font-family: serif !important;
 }
+
 
 .head-model {
   font-family: "Noto Sans Lao", sans-serif !important;

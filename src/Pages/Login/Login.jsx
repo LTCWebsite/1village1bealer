@@ -130,7 +130,7 @@ function Login() {
         <Grid className="login-con">
           <Grid container className="login_grid_logo">
             {/* <img src={logo2} width='270' /> */}
-            <u className="font-40"> PROMOTION CONTROL</u>
+            <u className="font-40 color-red"> One Village One Dealer</u>
           </Grid>
 
           <Paper elevation={10} style={paperStyle} className="login_paper">
@@ -189,6 +189,14 @@ function Login() {
               </Grid>
               <Grid item xs={2}></Grid>
             </Grid>
+            <div style={{ display: "flex", justifyContent: "center", }}>
+              <a className="book-log" href={book} target="_blank">
+                <span style={{ paddingRight: ".5rem" }}>
+                  <IconManual />
+                </span>
+                ຄູ່ມືການນຳໃຊ້ລະບົບ
+              </a>
+            </div>
           </Paper>
           {show && (
             <Stack sx={{ width: "100%" }} spacing={2}>
@@ -197,14 +205,6 @@ function Login() {
               </Alert>
             </Stack>
           )}
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <a className="book-log" href={book} target="_blank">
-              <span style={{ paddingRight: ".5rem" }}>
-                <IconManual />
-              </span>
-              ຄູ່ມືການນຳໃຊ້ລະບົບ
-            </a>
-          </div>
         </Grid>
       </div>
     </>
