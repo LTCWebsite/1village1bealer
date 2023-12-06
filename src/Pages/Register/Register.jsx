@@ -113,7 +113,7 @@ function Register() {
         <Grid className="login-con">
           <Grid container className="login_grid_logo">
             {/* <img src={logo2} width='270' /> */}
-            <u className="font-40"> 1 Village 1 Dealer</u>
+            {/* <u className="font-40"> 1 Village 1 Dealer</u> */}
           </Grid>
 
           <Paper elevation={10} style={paperStyle} className="login_paper">
