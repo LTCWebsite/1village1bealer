@@ -17,7 +17,7 @@ function router() {
             <Switch>
               <Route path={"/"} component={Login} exact />
               <Route path={"/register"} component={Register} exact />
-              <Route path={"/registerotp"} component={RegisterOTP} exact />
+              {/* <Route path={"/registerotp"} component={RegisterOTP} exact /> */}
               <ProtectRoute path={"/home"} component={Home} />
             </Switch>
         </Switch>

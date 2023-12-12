@@ -78,25 +78,6 @@ function Login() {
 
               history.push("/register");
             }
-
-            // if (res.data.resultCode === 200) {
-            //   console.log("res:", res);
-            //   localStorage.setItem(USER_KEY, forUsername);
-            //   localStorage.setItem("VIP_Inhouse_token", forUsername);
-            //   localStorage.setItem("role", res.data?.role);
-            //   history.push("/home");
-            // }
-
-            // if (response.data?.token === undefined) {
-            //   setShow(true);
-            // } else {
-            //   setShow(false);
-            //   Auth.login(() => {
-            //     // localStorage.setItem(USER_KEY, JSON.stringify(response.data));
-            //     // Cookies.set("VIP_Inhouse_token", response.data.token);
-            //     history.push("/home");
-            //   });
-            // }
           } else {
             toast.current.show({
               severity: "error",
