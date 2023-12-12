@@ -17,7 +17,8 @@ html {
   font-family: "Poppins", "Noto Sans Lao", sans-serif;
 }
 
-u, a {
+u,
+a {
   text-decoration: none;
   font-family: "Poppins", "Noto Sans Lao", sans-serif;
   font-weight: bold;
@@ -41,7 +42,7 @@ u, a {
   /* opacity: 0.9; */
 }
 
-.color-red{
+.color-red {
   color: rgb(241, 77, 88) !important;
 }
 
@@ -207,7 +208,7 @@ body .home_drawer_menu:hover {
 
 .H-promotion {
   color: white !important;
-  font-size: 20px !important;
+  font-size: 17px !important;
 }
 
 .MuiListItemText-primary {
@@ -878,6 +879,6 @@ td {
   z-index: 100 !important;
 }
 
-.add-newspeciallist{
+.add-newspeciallist {
   padding: 20px !important;
 }

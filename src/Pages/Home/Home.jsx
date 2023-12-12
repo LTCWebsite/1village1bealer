@@ -33,24 +33,26 @@ import {
   IconSetting,
   IconExit,
   IconManual,
+  IconEmbassy,
+  IconCompany,
 } from "../Icon/Icon";
 import Auth from "../../Components/Auth/Auth";
 import Profile from "../Profile/Profile";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import HomeReport from "../Report/HomeReport";
+// import HomeReport from "../Report/HomeReport";
 import HomeRole from "../UserSetting/HomeRole";
 import Dashboard1 from "../Dashboard/Dashboard1";
 import Promotions from "../Promotions/Firstactive";
 import ImportSpecialList from "../Promotions/ImportSpecialList";
-import Firstactive from "../Promotions/Firstactive";
 import Reportpromotion from "../Report/Reportpromotion";
-import Speciallist from "../Promotions/Speciallist";
 import AddNewList from "../Promotions/AddNewList";
 import Viewspeciallist from "../Promotions/View/Viewspeciallist";
 import Churn from "../Promotions/Churn";
-import { SimCard } from "@mui/icons-material";
+import { MapRounded, SettingsInputAntenna, SimCard, TravelExplore } from "@mui/icons-material";
 import AddNewNumberSpeciallist from "../Promotions/AddNewNumberSpeciallist";
+import SiteWork from "../SiteWork/SiteWork";
+import Map from "../Map/Map";
 
 const drawerWidth = 250;
 
@@ -263,8 +265,8 @@ export default function PersistentDrawerLeft() {
               marginBottom: "2em",
             }}
           >
-            <Grid xs={8}>
-              <u className="H-promotion">Promotion Control</u>
+            <Grid xs={8} style={{marginTop: "10px"}}>
+              <u className="H-promotion">One Village One Dealer</u>
               {/* <img src={logo2} width="170" /> */}
             </Grid>
             <Grid
@@ -315,103 +317,44 @@ export default function PersistentDrawerLeft() {
               <List>
                 <ListItemButton
                   className={
-                    pathname === "/home/speciallist"
+                    pathname === "/home/map"
                       ? "home_drawer_menu menu-active"
                       : "home_drawer_menu"
                   }
-                  onClick={() => history.push("/home/speciallist")}
+                  onClick={() => history.push("/home/map")}
                 >
                   <ListItemIcon style={{ minWidth: "30px" }}>
-                    <span style={{ paddingBottom: ".2rem" }}>
-                      <Iconmanage />
+                    <span style={{ paddingBottom: ".2rem", color: "#fff" }}>
+                      <TravelExplore />
                     </span>
                   </ListItemIcon>
                   <ListItemText
                     className="home_drawer_menuText"
-                    primary="Special List"
+                    primary="ແຜນທີ່"
                   />
                 </ListItemButton>
               </List>
               <List>
                 <ListItemButton
                   className={
-                    pathname === "/home/promotions/firstactive"
+                    pathname === "/home/sitework"
                       ? "home_drawer_menu menu-active"
                       : "home_drawer_menu"
                   }
-                  onClick={() => history.push("/home/promotions/firstactive")}
+                  onClick={() => history.push("/home/sitework")}
                 >
                   <ListItemIcon style={{ minWidth: "30px" }}>
-                    <span style={{ paddingBottom: ".2rem" }}>
-                      <IconCate />
+                    <span style={{ paddingBottom: ".2rem", color: "#fff" }}>
+                      <SettingsInputAntenna />
                     </span>
                   </ListItemIcon>
                   <ListItemText
                     className="home_drawer_menuText"
-                    primary="First Active"
+                    primary="ສະຖານີ"
                   />
                 </ListItemButton>
               </List>
-              <List>
-                <ListItemButton
-                  className={
-                    pathname === "/home/promotions/churn"
-                      ? "home_drawer_menu menu-active"
-                      : "home_drawer_menu"
-                  }
-                  onClick={() => history.push("/home/promotions/churn")}
-                >
-                  <ListItemIcon style={{ minWidth: "30px" }}>
-                    <span style={{ paddingBottom: ".2rem" }}>
-                      <IconMSISDN />
-                    </span>
-                  </ListItemIcon>
-                  <ListItemText
-                    className="home_drawer_menuText"
-                    primary="Churn"
-                  />
-                </ListItemButton>
-              </List>
-              {/* <List>
-                <ListItemButton
-                  className={
-                    pathname === "/home/package"
-                      ? "home_drawer_menu menu-active"
-                      : "home_drawer_menu"
-                  }
-                  onClick={() => history.push("/home/package")}
-                >
-                  <ListItemIcon style={{ minWidth: "30px" }}>
-                    <span style={{ paddingBottom: ".2rem" }}>
-                      <IconPackage />
-                    </span>
-                  </ListItemIcon>
-                  <ListItemText
-                    className="home_drawer_menuText"
-                    primary="ແພັກເກັດ"
-                  />
-                </ListItemButton>
-              </List> */}
-              {/* <List>
-                <ListItemButton
-                  className={
-                    pathname === "/home/report"
-                      ? "home_drawer_menu menu-active"
-                      : "home_drawer_menu"
-                  }
-                  onClick={() => history.push("/home/report")}
-                >
-                  <ListItemIcon style={{ minWidth: "30px" }}>
-                    <span style={{ paddingBottom: ".2rem" }}>
-                      <IconReport />
-                    </span>
-                  </ListItemIcon>
-                  <ListItemText
-                    className="home_drawer_menuText"
-                    primary="ການລາຍງານ"
-                  />
-                </ListItemButton>
-              </List> */}
+              
               <List>
                 <a className="openbook" href={book} target="_blank">
                   <ListItemButton>
@@ -464,16 +407,9 @@ export default function PersistentDrawerLeft() {
           <Switch>
             {/* <Route path={"/*"} component={Errors} exact /> */}
             <Route path={"/home/"} component={Dashboard1} exact />
-            <Route path={"/home/speciallist"} component={Speciallist} exact />
-            <Route
-              path={"/home/promotions/firstactive"}
-              component={Firstactive}
-              exact
-            />
+            <Route path={"/home/sitework"} component={SiteWork} exact />
+            <Route path={"/home/map"} component={Map} exact />
             <Route path={"/home/promotions/churn"} component={Churn} exact />
-            {/* <Route path={"/home/category"} component={CategoryPage} exact />
-            <Route path={"/home/category/group"} component={GroupPage} /> */}
-            {/* <Route path={"/home/package"} component={PackagePage} exact /> */}
             <Route path={"/home/profile"} component={Profile} exact />
             <Route path={"/home/report"} component={Reportpromotion} exact />
             <Route path={"/home/setting"} component={HomeRole} exact />
