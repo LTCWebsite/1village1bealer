@@ -49,10 +49,12 @@ import Reportpromotion from "../Report/Reportpromotion";
 import AddNewList from "../Promotions/AddNewList";
 import Viewspeciallist from "../Promotions/View/Viewspeciallist";
 import Churn from "../Promotions/Churn";
-import { MapRounded, SettingsInputAntenna, SimCard, TravelExplore } from "@mui/icons-material";
+import { AdminPanelSettings, MapRounded, Report, SettingsInputAntenna, SimCard, Storefront, TravelExplore } from "@mui/icons-material";
 import AddNewNumberSpeciallist from "../Promotions/AddNewNumberSpeciallist";
 import SiteWork from "../SiteWork/SiteWork";
 import Map from "../Map/Map";
+import Admin from "../Admin/Admin";
+import Dealer from "../Dealer/Dealer";
 
 const drawerWidth = 250;
 
@@ -354,7 +356,66 @@ export default function PersistentDrawerLeft() {
                   />
                 </ListItemButton>
               </List>
-              
+              <List>
+                <ListItemButton
+                  className={
+                    pathname === "/home/dealer"
+                      ? "home_drawer_menu menu-active"
+                      : "home_drawer_menu"
+                  }
+                  onClick={() => history.push("/home/dealer")}
+                >
+                  <ListItemIcon style={{ minWidth: "30px" }}>
+                    <span style={{ paddingBottom: ".2rem", color: "#fff" }}>
+                      <Storefront />
+                    </span>
+                  </ListItemIcon>
+                  <ListItemText
+                    className="home_drawer_menuText"
+                    primary="ຈັດການຕົວແທນ"
+                  />
+                </ListItemButton>
+              </List>
+              <List>
+                <ListItemButton
+                  className={
+                    pathname === "/home/admin"
+                      ? "home_drawer_menu menu-active"
+                      : "home_drawer_menu"
+                  }
+                  onClick={() => history.push("/home/admin")}
+                >
+                  <ListItemIcon style={{ minWidth: "30px" }}>
+                    <span style={{ paddingBottom: ".2rem", color: "#fff" }}>
+                    <AdminPanelSettings />
+                    </span>
+                  </ListItemIcon>
+                  <ListItemText
+                    className="home_drawer_menuText"
+                    primary="ຈັດການຜູ້ຈັດການ"
+                  />
+                </ListItemButton>
+              </List>
+              <List>
+                <ListItemButton
+                  className={
+                    pathname === "/home/report"
+                      ? "home_drawer_menu menu-active"
+                      : "home_drawer_menu"
+                  }
+                  onClick={() => history.push("/home/report")}
+                >
+                  <ListItemIcon style={{ minWidth: "30px" }}>
+                    <span style={{ paddingBottom: ".2rem", color: "#fff" }}>
+                      <Report />
+                    </span>
+                  </ListItemIcon>
+                  <ListItemText
+                    className="home_drawer_menuText"
+                    primary="ລາຍງານ"
+                  />
+                </ListItemButton>
+              </List>
               <List>
                 <a className="openbook" href={book} target="_blank">
                   <ListItemButton>
@@ -409,12 +470,14 @@ export default function PersistentDrawerLeft() {
             <Route path={"/home/"} component={Dashboard1} exact />
             <Route path={"/home/sitework"} component={SiteWork} exact />
             <Route path={"/home/map"} component={Map} exact />
-            <Route path={"/home/promotions/churn"} component={Churn} exact />
+            <Route path={"/home/dealer"} component={Dealer} exact />
+            <Route path={"/home/admin"} component={Admin} exact />
+            {/* <Route path={"/home/promotions/churn"} component={Churn} exact /> */}
             <Route path={"/home/profile"} component={Profile} exact />
             <Route path={"/home/report"} component={Reportpromotion} exact />
             <Route path={"/home/setting"} component={HomeRole} exact />
-            <Route path={"/home/importspecaillist"} component={ImportSpecialList} exact />
-            <Route path={"/home/addnewspeciallist"} component={AddNewNumberSpeciallist} exact />
+            {/* <Route path={"/home/importspecaillist"} component={ImportSpecialList} exact />
+            <Route path={"/home/addnewspeciallist"} component={AddNewNumberSpeciallist} exact /> */}
             <Route
               path={"/home/addnewspeciallist"}
               component={AddNewList}
