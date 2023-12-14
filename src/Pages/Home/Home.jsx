@@ -49,7 +49,15 @@ import Reportpromotion from "../Report/Reportpromotion";
 import AddNewList from "../Promotions/AddNewList";
 import Viewspeciallist from "../Promotions/View/Viewspeciallist";
 import Churn from "../Promotions/Churn";
-import { AdminPanelSettings, MapRounded, Report, SettingsInputAntenna, SimCard, Storefront, TravelExplore } from "@mui/icons-material";
+import {
+  AdminPanelSettings,
+  MapRounded,
+  Report,
+  SettingsInputAntenna,
+  SimCard,
+  Storefront,
+  TravelExplore,
+} from "@mui/icons-material";
 import AddNewNumberSpeciallist from "../Promotions/AddNewNumberSpeciallist";
 import SiteWork from "../SiteWork/SiteWork";
 import Map from "../Map/Map";
@@ -267,7 +275,7 @@ export default function PersistentDrawerLeft() {
               marginBottom: "2em",
             }}
           >
-            <Grid xs={8} style={{marginTop: "10px"}}>
+            <Grid xs={8} style={{ marginTop: "10px" }}>
               <u className="H-promotion">One Village One Dealer</u>
               {/* <img src={logo2} width="170" /> */}
             </Grid>
@@ -387,7 +395,7 @@ export default function PersistentDrawerLeft() {
                 >
                   <ListItemIcon style={{ minWidth: "30px" }}>
                     <span style={{ paddingBottom: ".2rem", color: "#fff" }}>
-                    <AdminPanelSettings />
+                      <AdminPanelSettings />
                     </span>
                   </ListItemIcon>
                   <ListItemText
@@ -437,7 +445,7 @@ export default function PersistentDrawerLeft() {
             <List>
               <ListItemButton
                 className={
-                  pathname === "/home/report"
+                  pathname === "/home/logout"
                     ? "home_drawer_menu menu-active"
                     : "home_drawer_menu"
                 }
