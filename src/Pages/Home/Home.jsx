@@ -61,8 +61,8 @@ import {
 import AddNewNumberSpeciallist from "../Promotions/AddNewNumberSpeciallist";
 import SiteWork from "../SiteWork/SiteWork";
 import Map from "../Map/Map";
-import Admin from "../Admin/Admin";
 import Dealer from "../Dealer/Dealer";
+import ManageAdmin from "../Admin/ManageAdmin";
 
 const drawerWidth = 250;
 
@@ -387,11 +387,11 @@ export default function PersistentDrawerLeft() {
               <List>
                 <ListItemButton
                   className={
-                    pathname === "/home/admin"
+                    pathname === "/home/manageadmin"
                       ? "home_drawer_menu menu-active"
                       : "home_drawer_menu"
                   }
-                  onClick={() => history.push("/home/admin")}
+                  onClick={() => history.push("/home/manageadmin")}
                 >
                   <ListItemIcon style={{ minWidth: "30px" }}>
                     <span style={{ paddingBottom: ".2rem", color: "#fff" }}>
@@ -479,7 +479,7 @@ export default function PersistentDrawerLeft() {
             <Route path={"/home/sitework"} component={SiteWork} exact />
             <Route path={"/home/map"} component={Map} exact />
             <Route path={"/home/dealer"} component={Dealer} exact />
-            <Route path={"/home/admin"} component={Admin} exact />
+            <Route path={"/home/manageadmin"} component={ManageAdmin} exact />
             {/* <Route path={"/home/promotions/churn"} component={Churn} exact /> */}
             <Route path={"/home/profile"} component={Profile} exact />
             <Route path={"/home/report"} component={Reportpromotion} exact />

@@ -16,6 +16,7 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import IconButton from "@mui/material/IconButton";
 import AxiosReq from "../../Components/Axios/AxiosReq";
+import { AxiosCheck } from "../../Components/Axios/AxiosReq";
 import { set } from "lodash";
 import { Toast } from "primereact/toast";
 import { Key } from "@mui/icons-material";
@@ -59,6 +60,10 @@ function Login() {
   const login = () => {
     localStorage.setItem("userName", forUsername);
 
+    const send = {
+      username: forUsername,
+    };
+
     if (forUsername === "") {
       toast.current.show({
         severity: "warn",
@@ -67,9 +72,10 @@ function Login() {
         life: 2000,
       });
     } else {
-      AxiosReq.post(`api/RequestOTP?username=${forUsername}`, {})
+      AxiosReq.post("otp", send)
         .then(function (res) {
-          // console.log(res.data);
+          console.log(res.data);
+
           if (res.status === 200) {
             setOTPStatus(true);
             if (res?.data?.resultCode === 201) {
@@ -105,10 +111,14 @@ function Login() {
     }
   };
 
-
   // Function For Submit Button
 
   const onOTP = () => {
+    const sendOTP = {
+      username: forUsername,
+      confirm_otp: idPart,
+    };
+
     if (idPart === "") {
       toast.current.show({
         severity: "warn",
@@ -117,12 +127,16 @@ function Login() {
         life: 2000,
       });
     } else {
-      AxiosReq.post(`api/ConfirmOTP?username=${user}&otp=${idPart}`, {})
+      AxiosReq.post("login", sendOTP)
         .then(function (response) {
+          console.log("OTP inFo", response);
           if (response.status === 200) {
             localStorage.setItem("USER_ID", response.data.username);
+            localStorage.setItem("IDWORK", response?.data?.detail?.emp_code);
             localStorage.setItem("Token", response?.data?.token);
-            // console.log("Data:", response?.data?.token);
+
+            // console.log("DataToken:", response?.data?.token);
+
             if (response.data?.token === undefined) {
               setShow(true);
             } else {
@@ -136,13 +150,35 @@ function Login() {
 
                 // console.log("Promotion_token", response.data.token);
                 Cookies.set("Promotion_token", response.data.token);
-                history.push("/home");
+
+                //check user
+                const id_Work = localStorage.getItem("IDWORK");
+
+                AxiosCheck.post(
+                  "login",
+                  {
+                    username: id_Work,
+                  },
+                  {
+                    headers: {
+                      "Content-Type": "application/json",
+                      Authorization: "Basic YWRtaW46YWRtaW4=",
+                    },
+                  }
+                ).then(function (res) {
+                  // console.log("Res159:", res);
+                  
+                  if(res?.data?.token === ""){
+                    console.log("Error")
+                  }else{
+                    history.push("/home");
+                  }
+                });
               });
             }
           } else {
             setShow(true);
           }
-
         })
         .catch(function (error) {
           console.log(error);
