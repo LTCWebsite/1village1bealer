@@ -176,12 +176,14 @@ body .home_drawer_back {
   margin-top: 10px;
 }
 
+/* ---- color sidbar ---- */
 body .home_drawer_tabmenu {
   background-color: red;
   height: 100%;
   overflow: hidden;
   /* background: linear-gradient(90deg, #3a4259, transparent) #3a4259 !important; */
-  background-color: #3a4259;
+  /* background-color: #3a4259; */
+  background: linear-gradient(0deg, rgba(246, 201, 201, 1) 0%, rgba(247, 46, 46, 1) 49%, #be4343 100%);
 }
 
 /* .home_drawer_tabmenu:hover{
@@ -881,4 +883,18 @@ td {
 
 .add-newspeciallist {
   padding: 20px !important;
+}
+
+/* ---- New css --- */
+.pd-10 {
+  padding: 10px !important;
+}
+
+.head-table {
+
+  background-color: #8b8b8b !important;
+}
+
+.name-header {
+  color: #fff !important;
 }

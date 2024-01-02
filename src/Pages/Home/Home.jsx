@@ -61,8 +61,13 @@ import {
 import AddNewNumberSpeciallist from "../Promotions/AddNewNumberSpeciallist";
 import SiteWork from "../SiteWork/SiteWork";
 import Map from "../Map/Map";
-import Admin from "../Admin/Admin";
 import Dealer from "../Dealer/Dealer";
+import ManageAdmin from "../Admin/ManageAdmin";
+import Province from "../ProvinceManagements/Province";
+import District from "../DistrictManagements/District";
+import province_icon from "../../Image/Lottie/SVG/Province.svg";
+import district_icon1 from "../../Image/Lottie/SVG/District1.svg";
+import district_icon2 from "../../Image/Lottie/SVG/DIstrict2.svg";
 
 const drawerWidth = 250;
 
@@ -387,11 +392,51 @@ export default function PersistentDrawerLeft() {
               <List>
                 <ListItemButton
                   className={
-                    pathname === "/home/admin"
+                    pathname === "/home/province"
                       ? "home_drawer_menu menu-active"
                       : "home_drawer_menu"
                   }
-                  onClick={() => history.push("/home/admin")}
+                  onClick={() => history.push("/home/province")}
+                >
+                  <ListItemIcon style={{ minWidth: "30px" }}>
+                    <span style={{ paddingBottom: ".2rem", color: "#fff" }}>
+                      <img src={province_icon} alt="Description of the image" width="30px" height="30px" />
+                    </span>
+                  </ListItemIcon>
+                  <ListItemText
+                    className="home_drawer_menuText"
+                    primary="ຈັດການເເຂວງ"
+                  />
+                </ListItemButton>
+              </List>
+              <List>
+                <ListItemButton
+                  className={
+                    pathname === "/home/district"
+                      ? "home_drawer_menu menu-active"
+                      : "home_drawer_menu"
+                  }
+                  onClick={() => history.push("/home/district")}
+                >
+                  <ListItemIcon style={{ minWidth: "30px" }}>
+                    <span style={{ paddingBottom: ".2rem", color: "#fff" }}>
+                    <img src={district_icon2} alt="Description of the image" width="30px" height="30px" />
+                    </span>
+                  </ListItemIcon>
+                  <ListItemText
+                    className="home_drawer_menuText"
+                    primary="ຈັດການເມືອງ"
+                  />
+                </ListItemButton>
+              </List>
+              <List>
+                <ListItemButton
+                  className={
+                    pathname === "/home/manageadmin"
+                      ? "home_drawer_menu menu-active"
+                      : "home_drawer_menu"
+                  }
+                  onClick={() => history.push("/home/manageadmin")}
                 >
                   <ListItemIcon style={{ minWidth: "30px" }}>
                     <span style={{ paddingBottom: ".2rem", color: "#fff" }}>
@@ -479,7 +524,9 @@ export default function PersistentDrawerLeft() {
             <Route path={"/home/sitework"} component={SiteWork} exact />
             <Route path={"/home/map"} component={Map} exact />
             <Route path={"/home/dealer"} component={Dealer} exact />
-            <Route path={"/home/admin"} component={Admin} exact />
+            <Route path={"/home/province"} component={Province} exact />
+            <Route path={"/home/district"} component={District} exact />
+            <Route path={"/home/manageadmin"} component={ManageAdmin} exact />
             {/* <Route path={"/home/promotions/churn"} component={Churn} exact /> */}
             <Route path={"/home/profile"} component={Profile} exact />
             <Route path={"/home/report"} component={Reportpromotion} exact />
