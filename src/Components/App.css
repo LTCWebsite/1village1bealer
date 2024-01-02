@@ -885,7 +885,16 @@ td {
   padding: 20px !important;
 }
 
- /* ---- New css --- */
- .pd-10{
+/* ---- New css --- */
+.pd-10 {
   padding: 10px !important;
- }
+}
+
+.head-table {
+
+  background-color: #8b8b8b !important;
+}
+
+.name-header {
+  color: #fff !important;
+}

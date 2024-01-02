@@ -1,11 +1,11 @@
 import { Add } from "@mui/icons-material";
 import { Button, Grid } from "@mui/material";
 import React, { useState } from "react";
-import AdminTable from "./AdminTable";
+import AdminTable from "../Admin/AdminTable";
 // import AdminTable from "./AdminTable";
 // import { AdminDialog, EditDialog } from "./AdminDialog";
 
-function ManageAdmin() {
+function District() {
   const [open, setopen] = useState({ add: false, edit: false });
   const [refresh, setrefresh] = useState(false);
   const [data, setdata] = useState([]);
@@ -16,7 +16,7 @@ function ManageAdmin() {
         <Grid item xs={12} className="pd-10">
           <Grid item xs={12}>
             <Grid item sx={10}>
-              <h3>ຈັດການຜູ້ດູແລ</h3>
+              <h3>ຈັດການເມືອງ</h3>
             </Grid>
             <Grid item xs={2} style={{marginBottom: "20px"}} className="right">
               <Button
@@ -61,4 +61,4 @@ function ManageAdmin() {
   );
 }
 
-export default ManageAdmin;
+export default District;

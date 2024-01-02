@@ -13,55 +13,62 @@ import { Delete } from "@mui/icons-material";
 export default function AdminTable({ refresh, cb_data, cb_edit }) {
   const [dataadmin, setDataAdmin] = React.useState([]);
   const [dataROwner, setRoomOwner] = React.useState([]);
+  const TOKEN = localStorage.getItem("Token");
 
   const loadData = () => {
-    // Axios.get("Manage_Admin/All", {
-    //   headers: {
-    //     Authorization: `Bearer ${Cookies.get("Smart_Meeting_token")}`,
-    //   },
-    // }).then((res) => {
-    //   if (res.status === 200) {
-    //     setDataAdmin(res.data);
-    //   }
-    // });
-
-    // Axios.get("Room_Owner/All", {
-    //   headers: {
-    //     Authorization: `Bearer ${Cookies.get("Smart_Meeting_token")}`,
-    //   },
-    // }).then((res) => {
-    //   if (res.status === 200) {
-    //     setRoomOwner(res.data);
-    //   }
-    // });
+    Axios.get("user", {
+      headers: {
+        Authorization: `Bearer ${Cookies.get("Smart_Meeting_token")}`,
+      },
+    }).then((res) => {
+      if (res.status === 200) {
+        setDataAdmin(res.data);
+      }
+    });
   };
 
-//   const EditMe = (id, st) => {
-//     cb_data(id);
-//     cb_edit(true);
-//   };
+  //   const EditMe = (id, st) => {
+  //     cb_data(id);
+  //     cb_edit(true);
+  //   };
 
-//   React.useEffect(() => {
-//     loadData();
-//   }, [refresh]);
+  //   React.useEffect(() => {
+  //     loadData();
+  //   }, [refresh]);
 
   return (
     <>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
+          <TableHead className="head-table">
             <TableRow>
-              <TableCell align="center">ລຳດັບ</TableCell>
-              <TableCell>ລະຫັດພະນັກງານ</TableCell>
-              <TableCell>ຊື່ ແລະ ນາມສະກຸນຜູ້ດູແລ</TableCell>
-              <TableCell>ເພດ</TableCell>
-              <TableCell>ພະແນກ</TableCell>
-              <TableCell align="right" width={150}>
-                ໜ້າທີ່ຮັບຜິດຊອບ
+              <TableCell className="name-header" align="center">
+                <u>ລຳດັບ</u>
               </TableCell>
-              <TableCell align="right">ຕຳແໜ່ງ</TableCell>
-              <TableCell align="center">ເບີໂທຕິດຕໍ່</TableCell>
-              <TableCell align="center">option</TableCell>
+              <TableCell className="name-header">
+                <u>ລະຫັດພະນັກງານ</u>
+              </TableCell>
+              <TableCell className="name-header">
+                <u>ຊື່ ແລະ ນາມສະກຸນຜູ້ດູແລ</u>
+              </TableCell>
+              <TableCell className="name-header">
+                <u>ເພດ</u>
+              </TableCell>
+              <TableCell className="name-header">
+                <u>ພະແນກ</u>
+              </TableCell>
+              <TableCell className="name-header" align="right" width={150}>
+                <u>ໜ້າທີ່ຮັບຜິດຊອບ</u>
+              </TableCell>
+              <TableCell className="name-header" align="right">
+                <u>ຕຳແໜ່ງ</u>
+              </TableCell>
+              <TableCell className="name-header" align="center">
+                <u>ເບີໂທຕິດຕໍ່</u>
+              </TableCell>
+              <TableCell className="name-header" align="center">
+                <u>ຈັດການ</u>
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
