@@ -17,6 +17,7 @@
     "axios": "^0.27.2",
     "bootstrap": "4.6.0",
     "chart.js": "^3.8.0",
+    "crypto-js": "^4.2.0",
     "dayjs": "^1.11.8",
     "file-saver": "2.0.5",
     "fs": "^0.0.1-security",
