@@ -20,6 +20,7 @@ import { AxiosCheck } from "../../Components/Axios/AxiosReq";
 import { set } from "lodash";
 import { Toast } from "primereact/toast";
 import { Key } from "@mui/icons-material";
+import { MyCryptTry } from "../../Components/Axios/MyCrypt";
 
 function Login() {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -35,7 +36,7 @@ function Login() {
 
   // For Set State Username and Password
   const [forUsername, setforUsername] = useState("");
-  const [idPart, setOTP] = useState("");
+  const [otp, setOTP] = useState("");
   const [text, setText] = useState("");
   const [show, setShow] = useState(false);
   const his = useHistory();
@@ -74,7 +75,7 @@ function Login() {
     } else {
       AxiosReq.post("otp", send)
         .then(function (res) {
-          console.log(res.data);
+          // console.log(res.data);
 
           if (res.status === 200) {
             setOTPStatus(true);
@@ -92,9 +93,9 @@ function Login() {
                 detail: "ຂໍ OTP ສຳເລັດ!",
                 life: 2000,
               });
-              Cookies.set("Promotion_token", res.data?.token);
+              Cookies.set("OneVillage_token", res.data?.token);
 
-              // history.push("/register");
+              history.push("/register");
             }
           } else {
             toast.current.show({
@@ -111,15 +112,16 @@ function Login() {
     }
   };
 
-  // Function For Submit Button
+  const _handCheck = () => {};
 
+  // Function For Submit Button
   const onOTP = () => {
     const sendOTP = {
       username: forUsername,
-      confirm_otp: idPart,
+      confirm_otp: otp,
     };
 
-    if (idPart === "") {
+    if (otp === "") {
       toast.current.show({
         severity: "warn",
         summary: "Warning".toUpperCase(),
@@ -129,53 +131,72 @@ function Login() {
     } else {
       AxiosReq.post("login", sendOTP)
         .then(function (response) {
-          console.log("OTP inFo", response);
+          // console.log("OTP inFo", response);
           if (response.status === 200) {
-            localStorage.setItem("USER_ID", response.data.username);
-            localStorage.setItem("IDWORK", response?.data?.detail?.emp_code);
-            localStorage.setItem("Token", response?.data?.token);
+            localStorage.setItem("EMP_CODE", response?.data?.detail?.emp_code);
 
-            // console.log("DataToken:", response?.data?.token);
+            console.log("Emp code", localStorage.getItem("EMP_CODE"));
 
-            if (response.data?.token === undefined) {
-              setShow(true);
-            } else {
-              setShow(false);
-              Auth.login(() => {
-                localStorage.setItem(USER_KEY, JSON.stringify(response.data));
-                localStorage.setItem(
-                  USER_KEY,
-                  JSON.stringify(response.data?.username)
-                );
+            //check user
+            const EmpCode = localStorage.getItem("EMP_CODE");
+            AxiosCheck.post(
+              "login",
+              {
+                username: EmpCode,
+              },
+              {
+                auth: {
+                  username: "admin",
+                  password: "admin",
+                },
+              }
+            ).then(function (res) {
+              console.log("Res", res);
+              localStorage.setItem("token", res?.data?.token);
+              history.push("/home");
+            });
 
-                // console.log("Promotion_token", response.data.token);
-                Cookies.set("Promotion_token", response.data.token);
+            // if (response.data?.token === undefined) {
+            //   setShow(true);
+            // } else {
+            //   setShow(false);
+            //   Auth.login(() => {
+            //     localStorage.setItem(
+            //       "OneVillage_token_role",
+            //       MyCryptTry(
+            //         "en",
+            //         JSON.stringify({
+            //           role: response.data?.role,
+            //           emp_code: forUsername,
+            //         })
+            //       )
+            //     );
+            //     // localStorage.setItem("OneVillage_token_role", MyCryptTry("en", JSON.stringify({ role: 'user', emp_code: forUsername })))
+            //     localStorage.setItem(USER_KEY, JSON.stringify(response.data));
+            //     Cookies.set("OneVillage_token", response.data.token, {
+            //       expires: 8 / 24,
+            //     });
+            //     // history.push("/home");
 
-                //check user
-                const id_Work = localStorage.getItem("IDWORK");
+            //     localStorage.setItem("USER_ID", response.data.username);
+            //     localStorage.setItem(
+            //       "IDWORK",
+            //       response?.data?.detail?.emp_code
+            //     );
+            //     // localStorage.setItem("Token", response?.data?.token);
 
-                AxiosCheck.post(
-                  "login",
-                  {
-                    username: id_Work,
-                  },
-                  {
-                    headers: {
-                      "Content-Type": "application/json",
-                      Authorization: "Basic YWRtaW46YWRtaW4=",
-                    },
-                  }
-                ).then(function (res) {
-                  // console.log("Res159:", res);
-                  
-                  if(res?.data?.token === ""){
-                    console.log("Error")
-                  }else{
-                    history.push("/home");
-                  }
-                });
-              });
-            }
+            //     if (EmpCode === "") {
+            //       toast.current.show({
+            //         severity: "error",
+            //         summary: "Error",
+            //         detail: "ບໍ່ມີໃນລະບົບ !",
+            //         life: 3000,
+            //       });
+            //     } else {
+            //       _handCheck();
+            //     }
+            //   });
+            // }
           } else {
             setShow(true);
           }

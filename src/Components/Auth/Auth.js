@@ -4,7 +4,7 @@ import cookie from "js-cookie";
 class Auth {
   constructor() {
     try {
-      if (typeof cookie.get("VIP_Inhouse_token") === "undefined") {
+      if (typeof cookie.get("OneVillage_token") === "undefined") {
         this.authenticated = true;
       } else {
         this.authenticated = true;
@@ -21,7 +21,7 @@ class Auth {
 
   logout(cb) {
     // localStorage.removeItem("login")
-    cookie.remove("VIP_Inhouse_token");
+    cookie.remove("OneVillage_token");
     this.authenticated = false;
     cb();
   }

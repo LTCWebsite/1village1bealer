@@ -9,22 +9,45 @@ import Paper from "@mui/material/Paper";
 import Axios from "../../Components/Axios/Axios";
 import Cookies from "js-cookie";
 import { Delete } from "@mui/icons-material";
+import "../Admin/Admin.css";
+import AxiosReq, { AxiosCheck } from "../../Components/Axios/AxiosReq";
 
 export default function AdminTable({ refresh, cb_data, cb_edit }) {
   const [dataadmin, setDataAdmin] = React.useState([]);
   const [dataROwner, setRoomOwner] = React.useState([]);
-  const TOKEN = localStorage.getItem("Token");
+
+  const token = localStorage.getItem("token");
 
   const loadData = () => {
-    Axios.get("user", {
-      headers: {
-        Authorization: `Bearer ${Cookies.get("Smart_Meeting_token")}`,
-      },
-    }).then((res) => {
-      if (res.status === 200) {
-        setDataAdmin(res.data);
-      }
-    });
+    if (!token) {
+      console.error("Token not found. Unable to make API request.");
+    } else {
+      AxiosCheck.get(
+        "user",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+        {
+          auth: {
+            username: "admin",
+            password: "admin",
+          },
+        }
+      )
+        .then((res) => {
+          console.log(res.data);
+          if (res.status === 200) {
+            setDataAdmin(res.data);
+          } else {
+            console.error("Unexpected status code:", res.status);
+          }
+        })
+        .catch((error) => {
+          console.error("Error making API request:", error.message);
+        });
+    }
   };
 
   //   const EditMe = (id, st) => {
@@ -32,9 +55,9 @@ export default function AdminTable({ refresh, cb_data, cb_edit }) {
   //     cb_edit(true);
   //   };
 
-  //   React.useEffect(() => {
-  //     loadData();
-  //   }, [refresh]);
+  React.useEffect(() => {
+    loadData();
+  }, [refresh]);
 
   return (
     <>
